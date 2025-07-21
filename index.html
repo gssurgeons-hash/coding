@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code and Chirag</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Josefin Sans", sans-serif;
+      color: rgb(236, 236, 236);
+      background-color: black;
+      position: relative;
+      z-index: 1;
+      transition: all 0.5s;
+    }
+    .back-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(23, 31, 44, 0.6);
+      border-radius: 20px;
+      margin: 10px;
+      flex-wrap: wrap;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      color: white;
+    }
+    .logo {
+      height: 40px;
+      width: 40px;
+      margin-right: 12px;
+      border-radius: 50%;
+    }
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: rgb(90, 90, 158);
+      font-size: 1.05rem;
+    }
+    section {
+      padding: 60px 30px;
+      margin: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+    }
+    .firstsection {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .firstsection > div {
+      width: 39%;
+      min-width: 300px;
+    }
+    .leftsection {
+      font-size: 3rem;
+      margin: 32px 0;
+    }
+    .rightsection img {
+      width: 300px;
+      max-width: 100%;
+    }
+    .purple {
+      color: rgb(162, 43, 192);
+    }
+    #element {
+      color: rgb(91, 7, 170);
+    }
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+    form input, form textarea {
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(23, 31, 44, 0.6);
+      border-radius: 20px;
+      margin: 20px;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .firstsection {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        padding-top: 10px;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay loop muted playsinline class="back-video">
+    <source src="3666987037-preview (1).mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <header>
+    <nav>
+      <div class="left">
+        <img src="kk.png" alt="Logo" class="logo" />
+        Chirag's Projects
+      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <button onclick="toggleMode()" style="padding: 8px 12px; background: gray; color: white; border-radius: 8px; border: none;">
+        Toggle Mode
+      </button>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="firstsection" data-aos="fade-up">
+      <div class="leftsection">
+        Hi, I'm <span class="purple">Chirag</span>
+        <div>I am a Web Enthusiast</div>
+        <span id="element"></span>
+      </div>
+      <div class="rightsection">
+        <img src="ai.png" alt="AI illustration" />
+      </div>
+    </section>
+    <section id="about" data-aos="fade-right">
+      <h3>About Me</h3>
+      <p>I enjoy creating responsive and modern web applications. I love combining beautiful design with powerful code to build amazing experiences.</p>
+    </section>
+    <section id="services" data-aos="fade-left">
+      <h3>Services</h3>
+      <p>I offer services in Web Development, Graphic Design, Video Editing, and App Development — from idea to execution.</p>
+    </section>
+    <section id="projects" data-aos="zoom-in-up">
+      <h3>Projects</h3>
+      <p>From portfolios to AI-based apps, I’ve worked on exciting projects using HTML, CSS, JavaScript, React, and more.</p>
+    </section>
+    <section id="contact" data-aos="fade-up">
+      <h3>Contact Me</h3>
+      <p>Feel free to email me at <strong>chirag@example.com</strong><br />Or connect via social media:</p>
+      <div style="text-align: center; margin-top: 10px;">
+        <a href="https://github.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="30" style="margin: 0 10px;"></a>
+        <a href="https://linkedin.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" style="margin: 0 10px;"></a>
+        <a href="https://twitter.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30" style="margin: 0 10px;"></a>
+      </div>
+      <form style="max-width: 600px; margin: 20px auto; display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" placeholder="Your Name" required style="padding: 10px;" />
+        <input type="email" placeholder="Your Email" required style="padding: 10px;" />
+        <textarea placeholder="Your Message" rows="4" required style="padding: 10px;"></textarea>
+        <button type="submit" style="padding: 10px; background-color: purple; color: white; border: none;">Send</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    © 2025 Chirag. All rights reserved. | <a href="#home" style="color: lightblue; text-decoration: none;">Back to Top</a>
+  </footer>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    var typed = new Typed("#element", {
+      strings: ["Web Developer", "Graphic Designer", "App Developer", "Video Editor"],
+      typeSpeed: 50,
+      loop: true,
+    });
+    function toggleMode() {
+      const body = document.body;
+      if (body.style.backgroundColor === "white") {
+        body.style.backgroundColor = "black";
+        body.style.color = "white";
+      } else {
+        body.style.backgroundColor = "white";
+        body.style.color = "black";
+      }
+    }
+  </script>
+</body>
+</html>
