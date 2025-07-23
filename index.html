@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code and Chirag</title>
 
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-04JL16LHXZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04JL16LHXZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-04JL16LHXZ');
+  </script>
 
-  gtag('config', 'G-G-04JL16LHXZ');
-</script>
-
-  <!-- ✅ Fonts & AOS -->
+  <!-- Fonts & AOS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet" />
@@ -34,9 +33,12 @@
       color: rgb(236, 236, 236);
       background: url("premium_photo-1661964187664-e26f70e1a224.jpg") no-repeat center center fixed;
       background-size: cover;
-      position: relative;
-      z-index: 1;
-      transition: all 0.5s;
+      transition: all 0.5s ease;
+    }
+
+    body.light-mode {
+      background: #ffffff;
+      color: #000000;
     }
 
     nav {
@@ -87,6 +89,9 @@
       margin: 20px;
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .firstsection {
@@ -113,7 +118,10 @@
     }
 
     .purple {
-      color: rgb(162, 43, 192);
+      background: linear-gradient(90deg, #a832e6, #6e39ef, #29c1f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
     }
 
     #element {
@@ -142,6 +150,13 @@
 
     button {
       cursor: pointer;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #6e39ef, #29c1f7);
+      box-shadow: 0 0 15px #29c1f7, 0 0 20px #6e39ef;
+      transition: 0.4s ease;
+      scale: 1.05;
     }
 
     footer {
@@ -226,6 +241,7 @@
     <section id="about" data-aos="fade-right">
       <h3>About Me</h3>
       <p>I enjoy creating responsive and modern web applications. I love combining beautiful design with powerful code to build amazing experiences.</p>
+    </section>
 
     <section id="services" data-aos="fade-left">
       <h3>Services</h3>
@@ -253,13 +269,25 @@
         <button type="submit" style="padding: 10px; background-color: rgb(26, 46, 133); color: white; border: none; border-radius: 20px;">Send</button>
       </form>
     </section>
+
+    <!-- 🔊 Background Music -->
+    <audio id="bg-music" loop>
+ <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">      Your browser does not support the audio element.
+    </audio>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+      <button onclick="toggleMusic()" style="padding: 10px 20px; background-color: #6e39ef; color: white; border: none; border-radius: 12px;">
+        🔊 Play Music
+      </button>
+    </div>
+
   </main>
 
   <footer>
     © 2025 Chirag. All rights reserved. | <a href="#home" style="color: lightblue; text-decoration: none;">Back to Top</a>
   </footer>
 
-  <!-- ✅ Typed JS + AOS -->
+  <!-- Typed JS + AOS -->
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -271,14 +299,21 @@
     });
 
     function toggleMode() {
-      const body = document.body;
-      if (body.style.backgroundColor === "white") {
-        body.style.backgroundColor = "black";
-        body.style.color = "white";
+      document.body.classList.toggle('light-mode');
+    }
+
+    let isPlaying = false;
+    const music = document.getElementById("bg-music");
+
+    function toggleMusic() {
+      if (!isPlaying) {
+        music.play();
+        event.target.textContent = "🔈 Pause Music";
       } else {
-        body.style.backgroundColor = "white";
-        body.style.color = "black";
+        music.pause();
+        event.target.textContent = "🔊 Play Music";
       }
+      isPlaying = !isPlaying;
     }
   </script>
 </body>
