@@ -4,181 +4,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code and Chirag</title>
+
+  <!-- ✅ Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z595PZ2240"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z595PZ2240');
+  </script>
+
+  <!-- ✅ Fonts & AOS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <!-- Same <head> as you already have -->
 
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-  body {
-    font-family: "Josefin Sans", sans-serif;
-    color: rgb(236, 236, 236);
-    background: url("premium_photo-1661964187664-e26f70e1a224.jpg") no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-    z-index: 1;
-    transition: all 0.5s;
-  }
+    body {
+      font-family: "Josefin Sans", sans-serif;
+      color: rgb(236, 236, 236);
+      background: url("premium_photo-1661964187664-e26f70e1a224.jpg") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+      transition: all 0.5s;
+    }
 
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: rgba(23, 31, 44, 0.6);
-    border-radius: 20px;
-    margin: 10px;
-    flex-wrap: wrap;
-  }
-
-  .left {
-    display: flex;
-    align-items: center;
-    font-size: 1.8rem;
-    color: white;
-  }
-
-  .logo {
-    height: 40px;
-    width: 40px;
-    margin-right: 12px;
-    border-radius: 50%;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-
-  nav ul li a {
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease;
-  }
-
-  nav ul li a:hover {
-    color: rgb(90, 90, 158);
-    font-size: 1.05rem;
-  }
-
-  section {
-    padding: 50px 20px;
-    margin: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-  }
-
-  .firstsection {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .firstsection > div {
-    width: 45%;
-    min-width: 300px;
-  }
-
-  .leftsection {
-    font-size: 2.5rem;
-    margin: 20px 0;
-  }
-
-  .rightsection img {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .purple {
-    color: rgb(162, 43, 192);
-  }
-
-  #element {
-    color: rgb(91, 7, 170);
-  }
-
-  h3 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  p {
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: auto;
-  }
-
-  form input, form textarea {
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-  }
-
-  button {
-    cursor: pointer;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(23, 31, 44, 0.6);
-    border-radius: 20px;
-    margin: 20px;
-    color: white;
-  }
-
-  /* ✅ Mobile Responsive Styling */
-  @media (max-width: 768px) {
     nav {
-      flex-direction: column;
-      align-items: flex-start;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(23, 31, 44, 0.6);
+      border-radius: 20px;
+      margin: 10px;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .logo {
+      height: 40px;
+      width: 40px;
+      margin-right: 12px;
+      border-radius: 50%;
     }
 
     nav ul {
-      flex-direction: column;
-      gap: 10px;
-      padding-top: 10px;
-      width: 100%;
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: rgb(90, 90, 158);
+      font-size: 1.05rem;
+    }
+
+    section {
+      padding: 50px 20px;
+      margin: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
     }
 
     .firstsection {
-      flex-direction: column;
-      text-align: center;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
     .firstsection > div {
-      width: 100%;
+      width: 45%;
+      min-width: 300px;
     }
 
     .leftsection {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin: 20px 0;
     }
 
-    form {
+    .rightsection img {
       width: 100%;
-      padding: 0 15px;
+      max-width: 300px;
+    }
+
+    .purple {
+      color: rgb(162, 43, 192);
+    }
+
+    #element {
+      color: rgb(91, 7, 170);
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    form input, form textarea {
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     footer {
-      font-size: 0.9rem;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(23, 31, 44, 0.6);
+      border-radius: 20px;
+      margin: 20px;
+      color: white;
     }
-  }
-</style>
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+        width: 100%;
+      }
+
+      .firstsection {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .firstsection > div {
+        width: 100%;
+      }
+
+      .leftsection {
+        font-size: 2rem;
+      }
+
+      form {
+        width: 100%;
+        padding: 0 15px;
+      }
+
+      footer {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -200,6 +209,7 @@
       </button>
     </nav>
   </header>
+
   <main>
     <section id="home" class="firstsection" data-aos="fade-up">
       <div class="leftsection">
@@ -211,18 +221,22 @@
         <img src="ai.png" alt="AI illustration" />
       </div>
     </section>
+
     <section id="about" data-aos="fade-right">
       <h3>About Me</h3>
       <p>I enjoy creating responsive and modern web applications. I love combining beautiful design with powerful code to build amazing experiences.</p>
     </section>
+
     <section id="services" data-aos="fade-left">
       <h3>Services</h3>
       <p>I offer services in Web Development, Graphic Design, Video Editing, and App Development — from idea to execution.</p>
     </section>
+
     <section id="projects" data-aos="zoom-in-up">
       <h3>Projects</h3>
       <p>From portfolios to AI-based apps, I’ve worked on exciting projects using HTML, CSS, JavaScript, React, and more.</p>
     </section>
+
     <section id="contact" data-aos="fade-up">
       <h3>Contact Me</h3>
       <p>Feel free to email me at <strong>chirag@example.com</strong><br />Or connect via social media:</p>
@@ -231,6 +245,7 @@
         <a href="https://linkedin.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" style="margin: 0 10px;"></a>
         <a href="https://twitter.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30" style="margin: 0 10px;"></a>
       </div>
+
       <form style="max-width: 600px; margin: 20px auto; display: flex; flex-direction: column; gap: 10px;">
         <input type="text" placeholder="Your Name" required style="padding: 10px;" />
         <input type="email" placeholder="Your Email" required style="padding: 10px;" />
@@ -239,9 +254,12 @@
       </form>
     </section>
   </main>
+
   <footer>
     © 2025 Chirag. All rights reserved. | <a href="#home" style="color: lightblue; text-decoration: none;">Back to Top</a>
   </footer>
+
+  <!-- ✅ Typed JS + AOS -->
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -251,6 +269,7 @@
       typeSpeed: 50,
       loop: true,
     });
+
     function toggleMode() {
       const body = document.body;
       if (body.style.backgroundColor === "white") {
