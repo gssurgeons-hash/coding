@@ -21,6 +21,40 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
+    /* Scroll Progress Bar */
+    #scroll-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #6e39ef, #29c1f7);
+      width: 0%;
+      z-index: 1000;
+    }
+
+    /* Back to Top Button */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      background-color: #6e39ef;
+      color: white;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 50%;
+      transition: 0.3s ease;
+    }
+
+    #backToTop:hover {
+      background-color: #29c1f7;
+      transform: scale(1.1);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -28,13 +62,14 @@
       scroll-behavior: smooth;
     }
 
-    body {
-      font-family: "Josefin Sans", sans-serif;
-      color: rgb(236, 236, 236);
-      background: url("premium_photo-1661964187664-e26f70e1a224.jpg") no-repeat center center fixed;
-      background-size: cover;
-      transition: all 0.5s ease;
-    }
+   body {
+  background-image: url('code zin.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* Optional for parallax effect */
+}
+
 
     body.light-mode {
       background: #ffffff;
@@ -50,6 +85,7 @@
       border-radius: 20px;
       margin: 10px;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
     .left {
@@ -71,6 +107,7 @@
       gap: 20px;
       list-style: none;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     nav ul li a {
@@ -82,6 +119,50 @@
     nav ul li a:hover {
       color: rgb(90, 90, 158);
       font-size: 1.05rem;
+    }
+
+    /* New search form styling */
+    nav form.search-form {
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 5px 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav form.search-form:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    nav form.search-form input[type="search"] {
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 1rem;
+      padding: 5px 10px;
+      outline: none;
+      width: 150px;
+      transition: width 0.3s ease;
+    }
+
+    nav form.search-form input[type="search"]::placeholder {
+      color: #ddd;
+    }
+
+    nav form.search-form button {
+      border: none;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0 5px;
+      outline: none;
+      transition: color 0.3s ease;
+    }
+
+    nav form.search-form button:hover {
+      color: #29c1f7;
     }
 
     section {
@@ -168,6 +249,18 @@
       color: white;
     }
 
+    /* Neon Glow Effect for visitor counter */
+    .glow-text {
+      font-size: 1.5rem;
+      color: #ffffff;
+      text-shadow: 
+        0 0 5px #6e39ef,
+        0 0 10px #6e39ef,
+        0 0 20px #29c1f7,
+        0 0 40px #29c1f7;
+      font-weight: bold;
+    }
+
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
@@ -178,6 +271,15 @@
         flex-direction: column;
         gap: 10px;
         padding-top: 10px;
+        width: 100%;
+      }
+
+      nav form.search-form {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      nav form.search-form input[type="search"] {
         width: 100%;
       }
 
@@ -206,6 +308,9 @@
   </style>
 </head>
 <body>
+  <!-- Scroll progress bar -->
+  <div id="scroll-bar"></div>
+
   <header>
     <nav>
       <div class="left">
@@ -220,6 +325,13 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="login.html">Login</a></li>
       </ul>
+
+      <!-- Search form added -->
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="search" placeholder="Search..." aria-label="Search" required />
+        <button type="submit" title="Search">&#128269;</button>
+      </form>
+
       <button onclick="toggleMode()" style="padding: 8px 12px; background: gray; color: white; border-radius: 8px; border: none;">
         Toggle Mode
       </button>
@@ -270,9 +382,17 @@
       </form>
     </section>
 
+    <!-- Visitor Counter Section -->
+    <section id="visitors" data-aos="fade-up">
+      <h3>Visitor Counter</h3>
+      <p>You are visitor number: <strong id="localCount" class="glow-text">0</strong></p>
+      <p>Total global visitors: <strong id="globalCount" class="glow-text">0</strong></p>
+    </section>
+
     <!-- 🔊 Background Music -->
     <audio id="bg-music" loop>
- <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">      Your browser does not support the audio element.
+      <source src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
     </audio>
 
     <div style="text-align: center; margin-bottom: 20px;">
@@ -280,8 +400,10 @@
         🔊 Play Music
       </button>
     </div>
-
   </main>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" title="Go to top">⬆</button>
 
   <footer>
     © 2025 Chirag. All rights reserved. | <a href="#home" style="color: lightblue; text-decoration: none;">Back to Top</a>
@@ -290,6 +412,7 @@
   <!-- Typed JS + AOS -->
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
     AOS.init();
     var typed = new Typed("#element", {
@@ -314,6 +437,72 @@
         event.target.textContent = "🔊 Play Music";
       }
       isPlaying = !isPlaying;
+    }
+
+    // Scroll Progress Bar and Back to Top Button
+    window.onscroll = function () {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      document.getElementById("scroll-bar").style.width = scrolled + "%";
+
+      // Show Back to Top Button
+      if (winScroll > 200) {
+        document.getElementById("backToTop").style.display = "block";
+      } else {
+        document.getElementById("backToTop").style.display = "none";
+      }
+    };
+
+    // Scroll to Top Function
+    document.getElementById("backToTop").addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Function to animate number count
+    function animateCount(id, start, end, duration) {
+      let range = end - start;
+      if(range === 0) {
+        document.getElementById(id).textContent = end;
+        return;
+      }
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let obj = document.getElementById(id);
+
+      let timer = setInterval(function () {
+        current += increment;
+        obj.textContent = current;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    // Local visitor counter
+    let localVisits = localStorage.getItem("visitCount") ? Number(localStorage.getItem("visitCount")) + 1 : 1;
+    localStorage.setItem("visitCount", localVisits);
+    animateCount("localCount", 0, localVisits, 1000);
+
+    // Global visitor counter using CountAPI
+    fetch("https://api.countapi.xyz/hit/chirag-portfolio-2025.com/visits")
+      .then((res) => res.json())
+      .then((data) => {
+        animateCount("globalCount", 0, data.value, 1500);
+      })
+      .catch(() => {
+        document.getElementById("globalCount").textContent = "Error";
+      });
+
+    // Search handler function
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = event.target.querySelector('input[type="search"]').value.trim();
+      if (query.length > 0) {
+        alert("You searched for: " + query);
+        // TODO: Replace alert with your actual search function or redirect
+      }
     }
   </script>
 </body>
