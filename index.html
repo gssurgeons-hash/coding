@@ -2,508 +2,540 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code and Chirag</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D.C.H</title>
+  <link rel="icon" type="image/png" href="LT.png"/>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- SEO -->
+  <meta name="description" content="Chirag's Portfolio — Web Developer, Designer & Creator. Explore projects, services and connect with me.">
+  <meta name="keywords" content="Chirag, Portfolio, Web Developer, Projects, Designer, Developer">
+  <meta name="author" content="Chirag">
+
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-04JL16LHXZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-04JL16LHXZ');
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-04JL16LHXZ');
   </script>
 
   <!-- Fonts & AOS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <style>
-    /* Scroll Progress Bar */
-    #scroll-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #6e39ef, #29c1f7);
-      width: 0%;
-      z-index: 1000;
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;font-family:'Josefin Sans',sans-serif}
+    body{
+      background-image:url("backgund.jpg");background-repeat:no-repeat;background-size:cover;background-position:center;background-attachment:fixed;
+      transition: background-color .35s ease, color .35s ease; color:#f3f3f3
     }
+    body.light-mode{background:#ffffff;color:#111}
+    .theme-flash{position:fixed;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.25), transparent 60%)}
+    .flash{opacity:1}
 
-    /* Back to Top Button */
-    #backToTop {
-      display: none;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-      font-size: 20px;
-      border: none;
-      outline: none;
-      background-color: #6e39ef;
-      color: white;
-      cursor: pointer;
-      padding: 12px 16px;
-      border-radius: 50%;
-      transition: 0.3s ease;
-    }
+    #scroll-bar{position:fixed;top:0;left:0;height:5px;background:linear-gradient(90deg,#6e39ef,#29c1f7);width:0%;z-index:1000}
 
-    #backToTop:hover {
-      background-color: #29c1f7;
-      transform: scale(1.1);
-    }
+    #backToTop{display:none;position:fixed;bottom:30px;right:30px;z-index:1000;font-size:20px;border:none;background:#6e39ef;color:white;cursor:pointer;padding:12px 16px;border-radius:50%;transition:.3s}
+    #backToTop:hover{background:#29c1f7;transform:scale(1.1)}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background-color:rgba(23,31,44,.6);border-radius:16px;margin:12px;flex-wrap:wrap;gap:10px}
+    .left{display:flex;align-items:center;gap:10px}
+    .logo{height:40px;width:40px;border-radius:50%}
+    nav ul{display:flex;gap:16px;list-style:none;flex-wrap:wrap}
+    nav ul li a{text-decoration:none;color:white;transition:.2s}
+    nav ul li a:hover{color:rgb(90,90,158);font-size:1.05rem}
 
-   body {
-  background-image: url('code zin.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed; /* Optional for parallax effect */
-}
+    .btn{cursor:pointer;border:none;border-radius:10px;padding:8px 12px}
+    .btn-primary{background:#6e39ef;color:#fff}
+    .btn-primary:hover{background:#29c1f7}
+    .btn-soft{background:rgba(255,255,255,.15);color:#fff}
+    .btn-soft:hover{background:rgba(255,255,255,.3)}
 
+    nav form.search-form{display:flex;align-items:center;background:rgba(255,255,255,.15);border-radius:20px;padding:5px 10px}
+    nav form.search-form input{border:none;background:transparent;color:white;font-size:1rem;padding:5px 10px;outline:none;width:150px}
+    nav form.search-form input::placeholder{color:#ddd}
+    nav form.search-form button{border:none;background:transparent;color:white;cursor:pointer;font-size:1.1rem;padding:0 5px}
+    nav form.search-form button:hover{color:#29c1f7}
 
-    body.light-mode {
-      background: #ffffff;
-      color: #000000;
-    }
+    section{padding:48px 16px;margin:16px;background:rgba(0,0,0,.5);border-radius:16px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1)}
+    .firstsection{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+    .firstsection>div{flex:1 1 320px}
+    .leftsection{font-size:2.3rem}
+    .purple{background:linear-gradient(90deg,#a832e6,#6e39ef,#29c1f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+    #element{color:rgb(91,7,170)}
+    h3{text-align:center;font-size:2rem;margin-bottom:16px}
+    p{max-width:900px;margin:auto;text-align:center;font-size:1.1rem;line-height:1.6}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background-color: rgba(23, 31, 44, 0.6);
-      border-radius: 20px;
-      margin: 10px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+    .skills{max-width:980px;margin:20px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;place-items:center}
+    .skill-card{width:160px;height:180px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;display:grid;place-items:center;gap:8px;padding:10px}
+    .skill-card .label{font-weight:700}
+    .ring{width:120px;height:120px}
 
-    .left {
-      display: flex;
-      align-items: center;
-      font-size: 1.8rem;
-      color: white;
-    }
+    .projects-wrap{max-width:1100px;margin:0 auto}
+    .project-filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .project{padding:14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+    .project h4{text-align:center;margin-bottom:8px}
+    .like-row{display:flex;justify-content:center;gap:10px;align-items:center;margin-top:8px}
+    .project media{width:100%}
 
-    .logo {
-      height: 40px;
-      width: 40px;
-      margin-right: 12px;
-      border-radius: 50%;
-    }
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1001}
+    .lightbox-inner{position:relative;max-width:90vw;max-height:85vh}
+    .lightbox img,.lightbox video{max-width:90vw;max-height:75vh;border-radius:12px}
+    .lb-close,.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:10px;border-radius:10px;cursor:pointer}
+    .lb-close{top:-40px;right:0;transform:none}
+    .lb-prev{left:-50px}
+    .lb-next{right:-50px}
 
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .weather{max-width:800px;margin:0 auto;display:grid;gap:8px;text-align:center}
 
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      transition: all 0.3s ease;
-    }
+    .testimonials{max-width:900px;margin:0 auto;display:grid;gap:14px}
+    .t-list{display:grid;gap:10px}
+    .t-card{padding:10px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
 
-    nav ul li a:hover {
-      color: rgb(90, 90, 158);
-      font-size: 1.05rem;
-    }
+    footer{text-align:center;padding:18px;background:rgba(23,31,44,.6);border-radius:16px;margin:16px;color:white}
+    .glow-text{font-size:1.2rem;color:#fff;text-shadow:0 0 5px #6e39ef,0 0 10px #6e39ef,0 0 20px #29c1f7,0 0 40px #29c1f7;font-weight:bold}
 
-    /* New search form styling */
-    nav form.search-form {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      padding: 5px 10px;
-      transition: background-color 0.3s ease;
-    }
+    .chat-toggle{position:fixed;bottom:25px;left:50px;z-index:1000}
+    .chatbox{position:fixed;bottom:80px;left:24px;width:320px;max-height:470px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.12);border-radius:14px;display:none;flex-direction:column;overflow:hidden;backdrop-filter:blur(8px);z-index:1000}
+    .chat-header{padding:10px;background:rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center}
+    .chat-body{padding:10px;overflow:auto;display:grid;gap:8px}
+    .msg{padding:8px 10px;border-radius:12px;max-width:85%}
+    .bot{background:rgba(255,255,255,.12)}
+    .user{background:#6e39ef;justify-self:end}
+    .chat-input{display:flex;gap:6px;padding:8px;background:rgba(255,255,255,.06)}
+    .chat-input input{flex:1;border:none;border-radius:10px;padding:8px}
 
-    nav form.search-form:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-    }
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:1002}
+    .modal-box{position:relative;width:min(1000px,90vw);height:min(90vh,800px);background:#fff;border-radius:14px;padding:10px}
+    .modal-close{position:absolute;top:8px;right:12px;cursor:pointer;border:none;background:transparent;font-size:22px}
 
-    nav form.search-form input[type="search"] {
-      border: none;
-      background: transparent;
-      color: white;
-      font-size: 1rem;
-      padding: 5px 10px;
-      outline: none;
-      width: 150px;
-      transition: width 0.3s ease;
-    }
-
-    nav form.search-form input[type="search"]::placeholder {
-      color: #ddd;
-    }
-
-    nav form.search-form button {
-      border: none;
-      background: transparent;
-      color: white;
-      cursor: pointer;
-      font-size: 1.1rem;
-      padding: 0 5px;
-      outline: none;
-      transition: color 0.3s ease;
-    }
-
-    nav form.search-form button:hover {
-      color: #29c1f7;
-    }
-
-    section {
-      padding: 50px 20px;
-      margin: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .firstsection {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .firstsection > div {
-      width: 45%;
-      min-width: 300px;
-    }
-
-    .leftsection {
-      font-size: 2.5rem;
-      margin: 20px 0;
-    }
-
-    .rightsection img {
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .purple {
-      background: linear-gradient(90deg, #a832e6, #6e39ef, #29c1f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-    }
-
-    #element {
-      color: rgb(91, 7, 170);
-    }
-
-    h3 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    p {
-      text-align: center;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    form input, form textarea {
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: linear-gradient(45deg, #6e39ef, #29c1f7);
-      box-shadow: 0 0 15px #29c1f7, 0 0 20px #6e39ef;
-      transition: 0.4s ease;
-      scale: 1.05;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(23, 31, 44, 0.6);
-      border-radius: 20px;
-      margin: 20px;
-      color: white;
-    }
-
-    /* Neon Glow Effect for visitor counter */
-    .glow-text {
-      font-size: 1.5rem;
-      color: #ffffff;
-      text-shadow: 
-        0 0 5px #6e39ef,
-        0 0 10px #6e39ef,
-        0 0 20px #29c1f7,
-        0 0 40px #29c1f7;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        padding-top: 10px;
-        width: 100%;
-      }
-
-      nav form.search-form {
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      nav form.search-form input[type="search"] {
-        width: 100%;
-      }
-
-      .firstsection {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .firstsection > div {
-        width: 100%;
-      }
-
-      .leftsection {
-        font-size: 2rem;
-      }
-
-      form {
-        width: 100%;
-        padding: 0 15px;
-      }
-
-      footer {
-        font-size: 0.9rem;
-      }
+    @media(max-width:768px){
+      .firstsection{flex-direction:column;text-align:center}
+      .leftsection{font-size:2rem}
+      nav form.search-form input{width:120px}
+      .lb-prev{left:8px}.lb-next{right:8px}
     }
   </style>
 </head>
 <body>
-  <!-- Scroll progress bar -->
   <div id="scroll-bar"></div>
+  <div class="theme-flash" id="themeFlash"></div>
 
   <header>
     <nav>
       <div class="left">
-        <img src="kk.png" alt="Logo" class="logo" />
-        Chirag's Projects
+        <img src="logo.png" alt="Logo" class="logo" loading="lazy"/>
+        <strong data-i18n="brand">Chirag's Projects</strong>
       </div>
+
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="#home" data-i18n="nav_home">Home</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
 
-      <!-- Search form added -->
       <form class="search-form" onsubmit="handleSearch(event)">
-        <input type="search" placeholder="Search..." aria-label="Search" required />
-        <button type="submit" title="Search">&#128269;</button>
+        <input type="search" placeholder="Search..." aria-label="Search" required/>
+        <button type="submit" title="Search">🔎</button>
       </form>
 
-      <button onclick="toggleMode()" style="padding: 8px 12px; background: gray; color: white; border-radius: 8px; border: none;">
-        Toggle Mode
-      </button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-soft" onclick="toggleMode()" id="themeBtn">🌓 <span data-i18n="btn_theme">Theme</span></button>
+        <button class="btn btn-soft" onclick="cycleLang()" id="langBtn">🌐 हिंदी</button>
+        <button class="btn btn-primary" id="viewResumeBtn">📄 <span data-i18n="btn_resume">Resume</span></button>
+      </div>
     </nav>
   </header>
 
   <main>
     <section id="home" class="firstsection" data-aos="fade-up">
       <div class="leftsection">
-        Hi, I'm <span class="purple">Chirag</span>
-        <div>I am a Web Enthusiast</div>
+        <span data-i18n="intro_hi">Hi, I'm</span> <span class="purple">Chirag</span>
+        <div data-i18n="intro_tagline">I am a Web Enthusiast</div>
         <span id="element"></span>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-start">
+          <button class="btn btn-soft" onclick="speakSection('about')" data-i18n="tts_about">🔊 Read About</button>
+          <button class="btn btn-soft" onclick="speakSection('services')" data-i18n="tts_services">🔊 Read Services</button>
+          <button class="btn btn-primary" onclick="toggleMusic(event)" id="musicBtn">🔊 <span data-i18n='music_play'>Play Music</span></button>
+        </div>
       </div>
       <div class="rightsection">
-        <img src="ai.png" alt="AI illustration" />
+        <img src="d-removebg-preview.png" alt="AI illustration" loading="lazy"/>
       </div>
     </section>
 
     <section id="about" data-aos="fade-right">
-      <h3>About Me</h3>
-      <p>I enjoy creating responsive and modern web applications. I love combining beautiful design with powerful code to build amazing experiences.</p>
+      <h3 data-i18n="about_title">About Me</h3>
+      <p id="aboutText" data-i18n="about_text">I enjoy creating responsive and modern web applications. I love combining beautiful design with powerful code to build amazing experiences.</p>
     </section>
 
     <section id="services" data-aos="fade-left">
-      <h3>Services</h3>
-      <p>I offer services in Web Development, Graphic Design, Video Editing, and App Development — from idea to execution.</p>
+      <h3 data-i18n="services_title">Services</h3>
+      <p id="servicesText" data-i18n="services_text">I offer services in Web Development, Graphic Design, Video Editing, and App Development — from idea to execution.</p>
     </section>
 
+    <!-- Projects -->
     <section id="projects" data-aos="zoom-in-up">
-      <h3>Projects</h3>
-      <p>From portfolios to AI-based apps, I’ve worked on exciting projects using HTML, CSS, JavaScript, React, and more.</p>
+      <h3 data-i18n="projects_title">Projects</h3>
+      <div class="projects-wrap">
+        <!-- ✅ छोटे Search + Filter controls जो JS से मैच करते हैं -->
+        <div class="project-filters">
+          <input id="projectSearch" type="search" placeholder="Search projects..." style="padding:8px;border-radius:8px;border:none;min-width:220px"/>
+          <select id="projectFilter" style="padding:8px;border-radius:8px;border:none">
+            <option value="all">All</option>
+            <option value="web">Web</option>
+            <option value="ai">AI</option>
+          </select>
+        </div>
+
+        <div class="projects" id="projectGrid">
+          <!-- 🔁 UPDATED: data-gallery में असली इमेज URLs -->
+          <div class="project" data-proj="p1" data-type="web"
+               data-gallery="https://images.unsplash.com/photo-1508921230-7d1b1bd5a5d4?q=80&w=1200&auto=format&fit=crop,
+                             https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop,
+                             https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop">
+            <h4>Portfolio Site</h4>
+            <p data-i18n="proj_1">Modern responsive portfolio with animations.</p>
+            <div class="like-row">
+              <button class="btn btn-soft" onclick="likeProject('p1')">👍 <span data-i18n="like">Like</span></button>
+              <span id="like-p1" class="glow-text">0</span>
+              <button class="btn btn-primary" onclick="openLightbox(this)">📸 View</button>
+            </div>
+          </div>
+
+          <!-- 🔁 UPDATED: data-video में असली MP4 लिंक -->
+          <div class="project" data-proj="p2" data-type="ai"
+               data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+            <h4>AI Tools Hub</h4>
+            <p data-i18n="proj_2">All-in-one AI tools with voice.</p>
+            <div class="like-row">
+              <button class="btn btn-soft" onclick="likeProject('p2')">👍 <span data-i18n="like">Like</span></button>
+              <span id="like-p2" class="glow-text">0</span>
+              <button class="btn btn-primary" onclick="openLightbox(this)">▶️ Demo</button>
+            </div>
+          </div>
+
+          <!-- 🔁 UPDATED: एक और गैलरी -->
+          <div class="project" data-proj="p3" data-type="web"
+               data-gallery="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop,
+                             https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop">
+            <h4>React Dashboard</h4>
+            <p data-i18n="proj_3">Analytics dashboard with charts.</p>
+            <div class="like-row">
+              <button class="btn btn-soft" onclick="likeProject('p3')">👍 <span data-i18n="like">Like</span></button>
+              <span id="like-p3" class="glow-text">0</span>
+              <button class="btn btn-primary" onclick="openLightbox(this)">📸 View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visitor Counter -->
+    <section id="visitors" data-aos="fade-up">
+      <h3 data-i18n="visitors_title">Visitor Counter</h3>
+      <p><span data-i18n="visitor_local">You are visitor number:</span> <strong id="localCount" class="glow-text">0</strong></p>
+      <p><span data-i18n="visitor_global">Total global visitors:</span> <strong id="globalCount" class="glow-text">0</strong></p>
+      <canvas id="visitsChart" style="max-width:900px;margin:16px auto 0;display:block"></canvas>
+    </section>
+
+    <!-- Weather -->
+    <section id="weather" data-aos="fade-up">
+      <h3 data-i18n="weather_title">Weather</h3>
+      <div class="weather">
+        <div id="weatherStatus" data-i18n="weather_loading">Detecting location & loading weather…</div>
+        <div id="weatherData"></div>
+      </div>
     </section>
 
     <section id="contact" data-aos="fade-up">
-      <h3>Contact Me</h3>
-      <p>Feel free to email me at <strong>chirag@example.com</strong><br />Or connect via social media:</p>
-      <div style="text-align: center; margin-top: 10px;">
-        <a href="https://github.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="30" style="margin: 0 10px;"></a>
-        <a href="https://linkedin.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" style="margin: 0 10px;"></a>
-        <a href="https://twitter.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30" style="margin: 0 10px;"></a>
+      <h3 data-i18n="contact_title">Contact Me</h3>
+      <p>
+        <span data-i18n="email_label">Email:</span> <strong id="email">chirag@example.com</strong>
+        <button class="btn btn-soft" onclick="copyEmail()">📋 <span data-i18n="copy">Copy</span></button>
+      </p>
+      <div style="text-align:center;margin-top:10px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="https://github.com/" target="_blank" aria-label="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="30" loading="lazy"></a>
+        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" loading="lazy"></a>
+        <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30" loading="lazy"></a>
       </div>
-
-      <form style="max-width: 600px; margin: 20px auto; display: flex; flex-direction: column; gap: 10px;">
-        <input type="text" placeholder="Your Name" required style="padding: 10px;" />
-        <input type="email" placeholder="Your Email" required style="padding: 10px;" />
-        <textarea placeholder="Your Message" rows="4" required style="padding: 10px;"></textarea>
-        <button type="submit" style="padding: 10px; background-color: rgb(26, 46, 133); color: white; border: none; border-radius: 20px;">Send</button>
+      <form style="max-width: 600px; margin: 20px auto; display:flex; flex-direction:column; gap:10px;">
+        <input type="text" placeholder="Your Name" required style="padding:10px;"/>
+        <input type="email" placeholder="Your Email" required style="padding:10px;"/>
+        <textarea placeholder="Your Message" rows="4" required style="padding:10px;"></textarea>
+        <button type="submit" class="btn btn-primary" data-i18n="send">Send</button>
       </form>
     </section>
 
-    <!-- Visitor Counter Section -->
-    <section id="visitors" data-aos="fade-up">
-      <h3>Visitor Counter</h3>
-      <p>You are visitor number: <strong id="localCount" class="glow-text">0</strong></p>
-      <p>Total global visitors: <strong id="globalCount" class="glow-text">0</strong></p>
+    <section id="testimonials" data-aos="fade-up">
+      <h3 data-i18n="testi_title">Testimonials</h3>
+      <form onsubmit="addTestimonial(event)" style="max-width:700px;margin:0 auto 16px;display:grid;gap:8px;">
+        <input id="tName" type="text" placeholder="Your Name" required style="padding:10px;"/>
+        <textarea id="tMsg" rows="3" placeholder="Your feedback…" required style="padding:10px;"></textarea>
+        <button class="btn btn-primary" type="submit" data-i18n="add_feedback">➕ Add Feedback</button>
+      </form>
+      <div class="t-list" id="tList"></div>
     </section>
 
-    <!-- 🔊 Background Music -->
     <audio id="bg-music" loop>
-      <source src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
+      <source src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" type="audio/mpeg"/>
     </audio>
-
-    <div style="text-align: center; margin-bottom: 20px;">
-      <button onclick="toggleMusic()" style="padding: 10px 20px; background-color: #6e39ef; color: white; border: none; border-radius: 12px;">
-        🔊 Play Music
-      </button>
-    </div>
   </main>
 
-  <!-- Floating Back to Top Button -->
   <button id="backToTop" title="Go to top">⬆</button>
 
   <footer>
-    © 2025 Chirag. All rights reserved. | <a href="#home" style="color: lightblue; text-decoration: none;">Back to Top</a>
+    © 2025 Chirag. <span id="datetime"></span>
   </footer>
 
-  <!-- Typed JS + AOS -->
+  <button class="btn btn-primary chat-toggle" onclick="toggleChat()">💬 <span data-i18n="chat">Chat</span></button>
+  <div class="chatbox" id="chatbox" role="dialog" aria-label="Chat Bot">
+    <div class="chat-header">
+      <strong data-i18n="chat_title">Assistant</strong>
+      <button class="btn btn-soft" onclick="toggleChat()">✖</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">👋 <span data-i18n="chat_intro">Hi! Ask about services, email, resume, weather, or type "play game".</span></div>
+      <div class="msg bot"><em data-i18n="chat_tip">Try: services / email / resume / weather / like / play game</em></div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Type here…" onkeydown="if(event.key==='Enter'){sendChat()}"/>
+      <button class="btn btn-primary" onclick="sendChat()" data-i18n="send">Send</button>
+    </div>
+  </div>
+
+  <div class="modal" id="resumeModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="closeResume">❌</button>
+      <iframe src="resume.pdf" title="Resume" width="100%" height="100%" style="border:0"></iframe>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lb-close" onclick="closeLightbox()">❌</button>
+      <button class="lb-prev" onclick="prevSlide()">⟨</button>
+      <button class="lb-next" onclick="nextSlide()">⟩</button>
+      <div id="lightboxMedia" style="text-align:center"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="gameModal" aria-hidden="true">
+    <div class="modal-box" style="max-width:420px;height:auto">
+      <button class="modal-close" onclick="toggleGame(false)">❌</button>
+      <h3 style="text-align:center;margin:8px 0">Tic Tac Toe</h3>
+      <div id="ttt" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px"></div>
+      <div id="tttStatus" style="text-align:center;margin:8px 0"></div>
+      <div style="display:flex;justify-content:center;gap:8px"><button class="btn btn-primary" onclick="resetTTT()">Restart</button></div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script>
     AOS.init();
-    var typed = new Typed("#element", {
-      strings: ["Web Developer", "Graphic Designer", "App Developer", "Video Editor"],
-      typeSpeed: 50,
-      loop: true,
+    new Typed("#element",{strings:["Web Developer","Graphic Designer","App Developer","Video Editor"],typeSpeed:50,loop:true});
+
+    const themeFlash=document.getElementById('themeFlash');
+    function applyTheme(theme){
+      if(theme==='light'){document.body.classList.add('light-mode');}
+      else{document.body.classList.remove('light-mode');}
+      localStorage.setItem('theme', theme);
+    }
+    function toggleMode(){
+      themeFlash.classList.add('flash'); setTimeout(()=>themeFlash.classList.remove('flash'),250);
+      const nowLight=!document.body.classList.contains('light-mode');
+      applyTheme(nowLight?'light':'dark');
+      document.getElementById('themeBtn').innerText = nowLight ? '🌙 Theme' : '🌓 Theme';
+    }
+    (function initTheme(){
+      const saved=localStorage.getItem('theme');
+      if(saved){applyTheme(saved);} else {
+        const hour=new Date().getHours();
+        applyTheme((hour>=19 || hour<6)?'dark':'light');
+      }
+    })();
+
+    let isPlaying=false;const music=document.getElementById("bg-music");
+    function toggleMusic(event){
+      if(!isPlaying){music.play(); event.target.innerHTML="🔈 <span data-i18n='music_pause'>Pause Music</span>";}
+      else{music.pause(); event.target.innerHTML="🔊 <span data-i18n='music_play'>Play Music</span>";}
+      isPlaying=!isPlaying;
+    }
+
+    window.addEventListener('scroll', ()=>{
+      const winScroll=document.documentElement.scrollTop||document.body.scrollTop;
+      const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+      const scrolled=(winScroll/height)*100;
+      document.getElementById("scroll-bar").style.width=scrolled+"%";
+      document.getElementById("backToTop").style.display=winScroll>200?"block":"none";
     });
+    document.getElementById("backToTop").onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 
-    function toggleMode() {
-      document.body.classList.toggle('light-mode');
+    function animateCount(id,start,end,duration){
+      let range=end-start;if(range===0){document.getElementById(id).textContent=end;return;}
+      let stepTime=Math.max(15,Math.abs(Math.floor(duration/range)));
+      let current=start;let inc=end>start?1:-1;let obj=document.getElementById(id);
+      let timer=setInterval(()=>{current+=inc;obj.textContent=current;if(current===end)clearInterval(timer);},stepTime);
     }
+    let localVisits=(+localStorage.getItem("visitCount")||0)+1; localStorage.setItem("visitCount", localVisits); animateCount("localCount",0,localVisits,800);
+    fetch("https://api.countapi.xyz/hit/chirag-portfolio-2025.com/visits").then(r=>r.json()).then(d=>animateCount("globalCount",0,d.value,1200)).catch(()=>{document.getElementById("globalCount").textContent="Error";});
 
-    let isPlaying = false;
-    const music = document.getElementById("bg-music");
+    (function visitsAnalytics(){
+      const key='visitsByDay'; const today=new Date().toISOString().slice(0,10);
+      let arr=JSON.parse(localStorage.getItem(key)||'[]');
+      const last=arr[arr.length-1];
+      if(!last || last.date!==today){arr.push({date:today,count:1});} else {last.count+=1;}
+      if(arr.length>30){arr=arr.slice(-30);}
+      localStorage.setItem(key,JSON.stringify(arr));
+      const ctx=document.getElementById('visitsChart'); if(!ctx) return;
+      const labels=arr.map(x=>x.date); const data=arr.map(x=>x.count);
+      new Chart(ctx,{type:'line',data:{labels,datasets:[{label:'Daily Visits (Local)',data,fill:false,tension:.3}]},options:{responsive:true,plugins:{legend:{display:true}},scales:{y:{beginAtZero:true}}}});
+    })();
 
-    function toggleMusic() {
-      if (!isPlaying) {
-        music.play();
-        event.target.textContent = "🔈 Pause Music";
-      } else {
-        music.pause();
-        event.target.textContent = "🔊 Play Music";
-      }
-      isPlaying = !isPlaying;
-    }
+    const projKeys=['p1','p2','p3'];
+    function initLikes(){projKeys.forEach(k=>{const el=document.getElementById('like-'+k); const saved=+localStorage.getItem('like-'+k)||0; el.textContent=saved;});}
+    function likeProject(k){const key='like-'+k; const now=(+localStorage.getItem(key)||0)+1; localStorage.setItem(key, now); document.getElementById('like-'+k).textContent=now;}
+    initLikes();
 
-    // Scroll Progress Bar and Back to Top Button
-    window.onscroll = function () {
-      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      let scrolled = (winScroll / height) * 100;
-      document.getElementById("scroll-bar").style.width = scrolled + "%";
-
-      // Show Back to Top Button
-      if (winScroll > 200) {
-        document.getElementById("backToTop").style.display = "block";
-      } else {
-        document.getElementById("backToTop").style.display = "none";
-      }
+    const i18n = {
+      en:{brand:"Chirag's Projects", nav_home:"Home", nav_about:"About", nav_services:"Services", nav_projects:"Projects", nav_contact:"Contact", btn_theme:"Theme", btn_resume:"Resume", intro_hi:"Hi, I'm", intro_tagline:"I am a Web Enthusiast", tts_about:"🔊 Read About", tts_services:"🔊 Read Services", music_play:"Play Music", music_pause:"Pause Music", about_title:"About Me", about_text:"I enjoy creating responsive and modern web applications. I love combining beautiful design with powerful code to build amazing experiences.", services_title:"Services", services_text:"I offer services in Web Development, Graphic Design, Video Editing, and App Development — from idea to execution.", skills_title:"Skills", projects_title:"Projects", proj_1:"Modern responsive portfolio with animations.", proj_2:"All-in-one AI tools with voice.", proj_3:"Analytics dashboard with charts.", like:"Like", visitors_title:"Visitor Counter", visitor_local:"You are visitor number:", visitor_global:"Total global visitors:", weather_title:"Weather", weather_loading:"Detecting location & loading weather…", contact_title:"Contact Me", email_label:"Email:", copy:"Copy", send:"Send", testi_title:"Testimonials", add_feedback:"➕ Add Feedback", chat:"Chat", chat_title:"Assistant", chat_intro:"Hi! Ask about services, email, resume, weather, or type \"play game\".", chat_tip:"Try: services / email / resume / weather / like / play game"},
+      hi:{brand:"चिराग के प्रोजेक्ट्स", nav_home:"होम", nav_about:"मेरे बारे में", nav_services:"सेवाएँ", nav_projects:"प्रोजेक्ट्स", nav_contact:"संपर्क", btn_theme:"थीम", btn_resume:"रिज़्यूमे", intro_hi:"नमस्ते, मैं", intro_tagline:"मैं एक वेब उत्साही हूँ", tts_about:"🔊 'About' पढ़ो", tts_services:"🔊 'Services' पढ़ो", music_play:"संगीत चलाएँ", music_pause:"संगीत रोकें", about_title:"मेरे बारे में", about_text:"मुझे रिस्पॉन्सिव और मॉडर्न वेब ऐप्स बनाना पसंद है। मैं खूबसूरत डिज़ाइन को मज़बूत कोड से मिलाकर बेहतरीन अनुभव बनाता हूँ।", services_title:"सेवाएँ", services_text:"मैं वेब डेवलपमेंट, ग्राफिक डिज़ाइन, वीडियो एडिटिंग और ऐप डेवलपमेंट—आइडिया से लॉन्च तक—सेवा देता हूँ।", skills_title:"स्किल्स", projects_title:"प्रोजेक्ट्स", proj_1:"एनीमेशन के साथ आधुनिक पोर्टफोलियो।", proj_2:"वॉइस के साथ ऑल-इन-वन AI टूल्स।", proj_3:"चार्ट्स वाला एनालिटिक्स डैशबोर्ड।", like:"लाइक", visitors_title:"विज़िटर काउंटर", visitor_local:"आपका स्थानीय विज़िट नंबर:", visitor_global:"कुल ग्लोबल विज़िटर्स:", weather_title:"मौसम", weather_loading:"लोकेशन और मौसम लोड हो रहा है…", contact_title:"संपर्क करें", email_label:"ईमेल:", copy:"कॉपी", send:"भेजें", testi_title:"टेस्टिमोनियल्स", add_feedback:"➕ फीडबैक जोड़ें", chat:"चैट", chat_title:"सहायक", chat_intro:"हाय! सेवाएँ, ईमेल, रिज्यूमे, मौसम पूछें या \"play game\" लिखें।", chat_tip:"ट्राई करें: services / email / resume / weather / like / play game"},
+      ur:{brand:"چراغ کے پراجیکٹس", nav_home:"ہوم", nav_about:"میرے بارے میں", nav_services:"سروسز", nav_projects:"پراجیکٹس", nav_contact:"رابطہ", btn_theme:"تھیم", btn_resume:"رزومے", intro_hi:"سلام، میں", intro_tagline:"میں ویب کا شوقین ہوں", tts_about:"🔊 اباؤٹ سنائیں", tts_services:"🔊 سروسز سنائیں", music_play:"موسیقی چلائیں", music_pause:"موسیقی روکیں", about_title:"میرے بارے میں", about_text:"مجھے جدید اور ریسپانسیو ویب ایپس بنانا پسند ہے۔", services_title:"سروسز", services_text:"ویب ڈیویلپمنٹ، گرافک ڈیزائن، ویڈیو ایڈیٹنگ اور ایپ ڈیویلپمنٹ۔", skills_title:"مہارتیں", projects_title:"پراجیکٹس", proj_1:"اینیمیشن کے ساتھ جدید پورٹ فولیو۔", proj_2:"وائس کے ساتھ آل اِن ون AI ٹولز۔", proj_3:"چارٹس کے ساتھ اینالٹکس ڈیش بورڈ۔", like:"پسند", visitors_title:"وزیٹر کاؤنٹر", visitor_local:"آپ کا لوکل وزٹ نمبر:", visitor_global:"کل عالمی وزیٹرز:", weather_title:"موسم", weather_loading:"لوکیشن اور موسم لوڈ ہو رہا ہے…", contact_title:"رابطہ کریں", email_label:"ای میل:", copy:"کاپی", send:"بھیجیں", testi_title:"تعریفی پیغامات", add_feedback:"➕ فیڈبیک شامل کریں", chat:"چیٹ", chat_title:"اسسٹنٹ", chat_intro:"ہیلو! سروسز، ای میل، رزومے، موسم پوچھیں یا \"play game\" لکھیں۔", chat_tip:"آزمائیں: services / email / resume / weather / like / play game"}
     };
+    const languages=['en','hi','ur'];
+    let currentLang = localStorage.getItem('lang') || 'en';
+    function applyLang(lang){
+      currentLang=lang; localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n'); if(i18n[lang][key]) el.textContent=i18n[lang][key];});
+      document.getElementById('langBtn').textContent = (lang==='en'?'🌐 हिंदी': lang==='hi'?'🌐 اردو':'🌐 English');
+    }
+    function cycleLang(){const idx=languages.indexOf(currentLang); const next=languages[(idx+1)%languages.length]; applyLang(next);} applyLang(currentLang);
 
-    // Scroll to Top Function
-    document.getElementById("backToTop").addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    async function loadWeather(lat, lon){
+      try{
+        const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`;
+        const res=await fetch(url); const data=await res.json(); const c=data.current;
+        const html=`<div><strong>Temp:</strong> ${c.temperature_2m}°C</div><div><strong>Humidity:</strong> ${c.relative_humidity_2m}%</div><div><strong>Wind:</strong> ${c.wind_speed_10m} km/h</div>`;
+        document.getElementById('weatherStatus').style.display='none'; document.getElementById('weatherData').innerHTML=html;
+      }catch(e){document.getElementById('weatherStatus').textContent='Weather unavailable.';}
+    }
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        pos=>loadWeather(pos.coords.latitude, pos.coords.longitude),
+        ()=>{document.getElementById('weatherStatus').textContent='Location blocked. Showing default (Delhi).'; loadWeather(28.6139,77.2090);}
+      );
+    }else{document.getElementById('weatherStatus').textContent='Geolocation not supported.';}
 
-    // Function to animate number count
-    function animateCount(id, start, end, duration) {
-      let range = end - start;
-      if(range === 0) {
-        document.getElementById(id).textContent = end;
-        return;
-      }
-      let stepTime = Math.abs(Math.floor(duration / range));
-      let current = start;
-      let increment = end > start ? 1 : -1;
-      let obj = document.getElementById(id);
+    function handleSearch(event){event.preventDefault(); const q=event.target.querySelector('input[type="search"]').value.trim(); if(q.length>0)window.open("https://www.google.com/search?q="+encodeURIComponent(q),"_blank");}
 
-      let timer = setInterval(function () {
-        current += increment;
-        obj.textContent = current;
-        if (current == end) {
-          clearInterval(timer);
+    function copyEmail(){const email=document.getElementById("email").textContent.trim(); navigator.clipboard.writeText(email); alert((currentLang==='en'?'Copied: ':currentLang==='hi'?'कॉपी किया: ':'کاپی ہوا: ')+email);}
+
+    function speakSection(id){const elText = document.getElementById(id==='about'?'aboutText':'servicesText')?.textContent || ''; const utter = new SpeechSynthesisUtterance(elText); utter.rate=1; utter.pitch=1; utter.lang = currentLang==='hi' ? 'hi-IN' : (currentLang==='ur' ? 'ur-PK' : 'en-US'); window.speechSynthesis.cancel(); window.speechSynthesis.speak(utter);}
+
+    function drawRing(canvasId, percent){
+      const cv=document.getElementById(canvasId); if(!cv) return; const ctx=cv.getContext('2d'); const cx=cv.width/2, cy=cv.height/2, r=50, lw=10;
+      ctx.clearRect(0,0,cv.width,cv.height); ctx.beginPath(); ctx.arc(cx,cy,r,0,2*Math.PI); ctx.strokeStyle='rgba(255,255,255,.2)'; ctx.lineWidth=lw; ctx.stroke();
+      const start=-Math.PI/2; const end=start + (percent/100)*2*Math.PI; ctx.beginPath(); ctx.arc(cx,cy,r,start,end); ctx.strokeStyle='#6e39ef'; ctx.lineWidth=lw; ctx.lineCap='round'; ctx.stroke();
+      ctx.fillStyle=getComputedStyle(document.body).color; ctx.font='bold 16px Josefin Sans'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(percent+"%",cx,cy);
+    }
+    const skillPerc={"ring-html":95,"ring-css":88,"ring-js":86,"ring-react":80,"ring-ui":82};
+    const skillsObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){Object.entries(skillPerc).forEach(([id,p])=>{let cur=0; const t=setInterval(()=>{cur+=2; drawRing(id,Math.min(cur,p)); if(cur>=p) clearInterval(t);},16);}); skillsObserver.disconnect();}});},{threshold:.35});
+    // अगर skills सेक्शन मौजूद न हो तो observer attach न करें
+    const skillsEl=document.getElementById('skills'); if(skillsEl) skillsObserver.observe(skillsEl);
+
+    // ✅ Search + Filter logic (अब DOM में controls मौजूद हैं)
+    const searchEl=document.getElementById("projectSearch");
+    const filterEl=document.getElementById("projectFilter");
+    const projects=[...document.querySelectorAll(".project")];
+    function updateProjects(){
+      const keyword=(searchEl.value||'').toLowerCase(); const category=(filterEl.value||'all');
+      projects.forEach(p=>{const text=p.textContent.toLowerCase(); const type=p.dataset.type; p.style.display=((text.includes(keyword)||keyword==='') && (category==='all'|| type===category))?"block":"none";});
+    }
+    searchEl.addEventListener("input",updateProjects); filterEl.addEventListener("change",updateProjects);
+
+    let lbIndex=0, lbItems=[]; const lb=document.getElementById('lightbox'); const lbMedia=document.getElementById('lightboxMedia');
+    function openLightbox(btn){
+      const card=btn.closest('.project'); lbItems=[]; lbIndex=0;
+      const video=card.dataset.video; const gallery=(card.dataset.gallery||'').split(',').filter(Boolean).map(s=>s.trim());
+      if(video){lbItems=[{type:'video',src:video}]}
+      else if(gallery.length){lbItems=gallery.map(src=>({type:'img',src}))}
+      if(!lbItems.length) return;
+      lb.style.display='flex'; renderLB();
+    }
+    function renderLB(){ lbMedia.innerHTML=''; const item=lbItems[lbIndex]; if(item.type==='video'){ const v=document.createElement('video'); v.src=item.src; v.controls=true; v.autoplay=true; v.style.maxWidth='90vw'; lbMedia.appendChild(v);} else { const img=document.createElement('img'); img.src=item.src; lbMedia.appendChild(img);} }
+    function closeLightbox(){lb.style.display='none'; lbMedia.innerHTML='';}
+    function prevSlide(){lbIndex=(lbIndex-1+lbItems.length)%lbItems.length; renderLB();}
+    function nextSlide(){lbIndex=(lbIndex+1)%lbItems.length; renderLB();}
+    lb.addEventListener('click',e=>{ if(e.target===lb) closeLightbox(); });
+
+    function renderTestimonials(){ const list=JSON.parse(localStorage.getItem('testimonials')||'[]'); const box=document.getElementById('tList'); box.innerHTML=''; if(!list.length){ box.innerHTML = `<div class="t-card">${currentLang==='en'?'No feedback yet.': currentLang==='hi'?'अभी कोई फीडबैक नहीं।':'ابھی کوئی فیڈبیک نہیں'}</div>`; return;} list.forEach(t=>{ const div=document.createElement('div'); div.className='t-card'; div.innerHTML=`<strong>${t.name}</strong><div>${t.msg}</div>`; box.appendChild(div); }); }
+    function addTestimonial(e){ e.preventDefault(); const name=document.getElementById('tName').value.trim(); const msg=document.getElementById('tMsg').value.trim(); if(!name||!msg) return; const list=JSON.parse(localStorage.getItem('testimonials')||'[]'); list.unshift({name,msg,ts:Date.now()}); localStorage.setItem('testimonials', JSON.stringify(list)); document.getElementById('tName').value=''; document.getElementById('tMsg').value=''; renderTestimonials(); trySyncFirebase({name,msg}); }
+    renderTestimonials();
+
+    async function trySyncFirebase(entry){
+      if(!window.FIREBASE_CONFIG) return;
+      try{
+        if(!window._fbLoaded){
+          const s1=document.createElement('script'); s1.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js';
+          const s2=document.createElement('script'); s2.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js';
+          await new Promise(r=>{s1.onload=r; document.head.appendChild(s1)});
+          await new Promise(r=>{s2.onload=r; document.head.appendChild(s2)});
+          window._fbLoaded=true; firebase.initializeApp(window.FIREBASE_CONFIG); window.db=firebase.firestore();
         }
-      }, stepTime);
+        await db.collection('testimonials').add({...entry,ts:Date.now()});
+      }catch(err){console.warn('Firebase sync failed:',err)}
     }
 
-    // Local visitor counter
-    let localVisits = localStorage.getItem("visitCount") ? Number(localStorage.getItem("visitCount")) + 1 : 1;
-    localStorage.setItem("visitCount", localVisits);
-    animateCount("localCount", 0, localVisits, 1000);
+    function toggleChat(){ const box=document.getElementById('chatbox'); box.style.display = (box.style.display==='flex'?'none':'flex'); if(box.style.display==='flex'){document.getElementById('chatInput').focus();} }
+    function sendChat(){ const input=document.getElementById('chatInput'); const text=input.value.trim(); if(!text) return; addMsg(text,'user'); handleChat(text); input.value=''; }
+    function addMsg(t,who){ const b=document.getElementById('chatBody'); const d=document.createElement('div'); d.className='msg '+who; d.textContent=t; b.appendChild(d); b.scrollTop=b.scrollHeight; }
 
-    // Global visitor counter using CountAPI
-    fetch("https://api.countapi.xyz/hit/chirag-portfolio-2025.com/visits")
-      .then((res) => res.json())
-      .then((data) => {
-        animateCount("globalCount", 0, data.value, 1500);
-      })
-      .catch(() => {
-        document.getElementById("globalCount").textContent = "Error";
-      });
-
-    // Search handler function
-    function handleSearch(event) {
-      event.preventDefault();
-      const query = event.target.querySelector('input[type="search"]').value.trim();
-      if (query.length > 0) {
-        alert("You searched for: " + query);
-        // TODO: Replace alert with your actual search function or redirect
+    async function handleChat(text){
+      const t=text.toLowerCase();
+      if(t.includes('play game')){ addMsg('Launching Tic Tac Toe…','bot'); toggleGame(true); return; }
+      if(window.AI_ENDPOINT && window.AI_MODEL && window.AI_API_KEY){
+        try{
+          const ai = await fetch(window.AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+window.AI_API_KEY},body:JSON.stringify({model:window.AI_MODEL,messages:[{role:'system',content:'You are a helpful portfolio assistant for Chirag.'},{role:'user',content:text}]})});
+          const j=await ai.json(); const msg=(j.choices?.[0]?.message?.content)||''; if(msg){ addMsg(msg,'bot'); return; }
+        }catch(e){ console.warn('AI failed, falling back:',e) }
       }
+      const reply = getReply(t); setTimeout(()=>addMsg(reply,'bot'), 250);
     }
+    function getReply(t){
+      if(t.includes('service') || t.includes('सेवा') || t.includes('service')) return currentLang==='en'
+        ? 'I provide Web Dev, Graphic Design, Video Editing & App Dev.'
+        : (currentLang==='hi' ? 'मैं वेब डेवलपमेंट, ग्राफिक डिज़ाइन, वीडियो एडिटिंग और ऐप डेवलपमेंट सेवाएँ देता हूँ.' : 'میں ویب ڈیولپمنٹ، گرافک ڈیزائن، ویڈیو ایڈیٹنگ اور ایپ ڈیولپمنٹ دیتا ہوں۔');
+      if(t.includes('email')) return 'chirag@example.com';
+      if(t.includes('resume') || t.includes('cv')) return (toggleResume(true), currentLang==='en' ? 'Opened resume preview.' : currentLang==='hi' ? 'रिज़्यूमे प्रीव्यू खोला गया।' : 'رزومے پری ویو کھول دیا گیا۔');
+      if(t.includes('weather') || t.includes('मौसम') || t.includes('موسم')) return currentLang==='en'
+        ? 'Weather is shown in the Weather section using your location.'
+        : (currentLang==='hi' ? 'मौसम सेक्शन में आपकी लोकेशन के आधार पर मौसम दिखाया जाता है.' : 'موسم سیکشن میں آپ کی لوکیشن کے مطابق موسم دکھایا جاتا ہے۔');
+      if(t.includes('like')) return currentLang==='en' ? 'Open Projects section and press 👍 Like on any project.' : (currentLang==='hi' ? 'प्रोजेक्ट्स सेक्शन में जाएँ और किसी भी प्रोजेक्ट पर 👍 लाइक दबाएँ.' : 'پراجیکٹس سیکشن میں جائیں اور کسی بھی پراجیکٹ پر 👍 دبائیں۔');
+      return currentLang==='en' ? "Sorry, I didn't get that. Try: services / email / resume / weather / like / play game"
+                                : (currentLang==='hi' ? "माफ़ करें, समझ नहीं पाया। ट्राई करें: services / email / resume / weather / like / play game" : "معذرت، سمجھ نہیں سکا۔ آزمائیں: services / email / resume / weather / like / play game");
+    }
+
+    const resumeModal=document.getElementById('resumeModal');
+    document.getElementById('viewResumeBtn').addEventListener('click',()=>toggleResume(true));
+    document.getElementById('closeResume').addEventListener('click',()=>toggleResume(false));
+    function toggleResume(show){ resumeModal.style.display = show?'flex':'none'; }
+
+    const gameModal=document.getElementById('gameModal'); const boardEl=document.getElementById('ttt'); let board, turn, gameOver;
+    function toggleGame(show){ gameModal.style.display = show?'flex':'none'; if(show) resetTTT(); }
+    function resetTTT(){ board=['','','','','','','','','']; turn='X'; gameOver=false; renderTTT('Your turn (X)'); }
+    function renderTTT(status){ boardEl.innerHTML=''; board.forEach((v,i)=>{ const b=document.createElement('button'); b.className='btn btn-soft'; b.style.cssText='height:90px;font-size:28px'; b.textContent=v; b.onclick=()=>move(i); boardEl.appendChild(b); }); document.getElementById('tttStatus').textContent=status; }
+    function move(i){ if(gameOver||board[i]) return; board[i]=turn; const win=winner(); if(win){ gameOver=true; renderTTT(turn+" wins!"); return; } if(board.every(Boolean)){ gameOver=true; renderTTT('Draw'); return; } turn = (turn==='X'?'O':'X'); renderTTT('Turn: '+turn); if(turn==='O') setTimeout(aiMove,350); }
+    function aiMove(){ for(let i=0;i<9;i++){ if(!board[i]){ move(i); break; } } }
+    function winner(){ const w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; return w.some(([a,b,c])=>board[a]&&board[a]===board[b]&&board[a]===board[c]); }
+
+    function updateDateTime(){document.getElementById("datetime").textContent=new Date().toLocaleString();}
+    setInterval(updateDateTime,1000); updateDateTime();
   </script>
 </body>
 </html>
