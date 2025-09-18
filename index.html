@@ -118,12 +118,78 @@
       nav form.search-form input{width:120px}
       .lb-prev{left:8px}.lb-next{right:8px}
     }
+
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+  body,html{width:100%;height:100%;font-family:Arial,sans-serif;overflow:hidden;}
+
+  /* Welcome Popup */
+  #welcomePopup{
+    position:fixed;width:100%;height:100%;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:10000;
+    animation:fadeIn 1.5s ease forwards;
+  }
+
+  #logo{
+    font-size:60px;font-weight:bold;
+    background:linear-gradient(45deg,#ff6ec4,#7873f5);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:scaleUp 2s ease forwards;
+  }
+
+  #tagline{
+    margin-top:15px;font-size:22px;color:#fff;opacity:0;
+    animation:fadeText 2s 1.5s forwards;
+  }
+
+  #startBtn{
+    margin-top:30px;padding:12px 28px;font-size:20px;font-weight:bold;
+    color:#fff;border:none;border-radius:12px;cursor:pointer;
+    background:linear-gradient(45deg,#ff6ec4,#7873f5);
+    box-shadow:0 0 15px rgba(255,64,129,0.6);
+    opacity:0;animation:fadeText 2s 2.5s forwards;
+    transition:.3s;
+  }
+  #startBtn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px rgba(255,64,129,0.8);
+  }
+
+  /* Floating stars */
+  .star{
+    position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;
+    animation:floatStars linear infinite;opacity:0.8;
+  }
+
+  /* Animations */
+  @keyframes scaleUp{0%{transform:scale(0.5)}100%{transform:scale(1)}}
+  @keyframes fadeText{0%{opacity:0}100%{opacity:1}}
+  @keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+  @keyframes floatStars{0%{transform:translateY(0) translateX(0);}100%{transform:translateY(-800px) translateX(300px);}}
+
+  /* Main Site */
+  #mainSite{
+    display:none;
+    width:100%;
+    height:100%;
+    background:#111;
+    color:#fff;
+    padding:20px;
+    overflow:auto;
+  }
   </style>
 </head>
 <body>
   <div id="scroll-bar"></div>
   <div class="theme-flash" id="themeFlash"></div>
 
+  <!-- Welcome Popup -->
+<div id="welcomePopup">
+  <div id="logo">DCH</div>
+  <div id="tagline">Welcome To The D.C.H🚀</div>
+  <button id="startBtn" onclick="startSite()">Start</button>
+</div>
   <header>
     <nav>
       <div class="left">
@@ -536,6 +602,25 @@
 
     function updateDateTime(){document.getElementById("datetime").textContent=new Date().toLocaleString();}
     setInterval(updateDateTime,1000); updateDateTime();
+
+     // Floating stars
+  for(let i=0;i<80;i++){
+    let star=document.createElement("div");
+    star.classList.add("star");
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.width=Math.random()*3+1+"px";
+    star.style.height=star.style.width;
+    star.style.animationDuration=(Math.random()*10+5)+"s";
+    star.style.opacity=Math.random();
+    document.body.appendChild(star);
+  }
+
+  function startSite(){
+    document.getElementById("welcomePopup").style.display="none";
+    document.getElementById("mainSite").style.display="block";
+    document.body.style.overflow="auto";
+  }
   </script>
 </body>
 </html>
